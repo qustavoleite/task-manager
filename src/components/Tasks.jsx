@@ -5,7 +5,10 @@ export function Tasks({ tasks, onTaskClick, onDeleteClick }) {
   const navigate = useNavigate()
 
   function onSeeDetailsClick(task) {
-    navigate(`/task?title=${task.title}&description=${task.description}`)
+    const query = new URLSearchParams()
+    query.set("title", task.title)
+    query.set("description", task.description)
+    navigate(`/task?${query.toString()}`)
   }
 
   return (
